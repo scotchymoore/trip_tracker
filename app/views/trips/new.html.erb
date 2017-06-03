@@ -1,2 +1,15 @@
-<h1>Trips#new</h1>
-<p>Find me in app/views/trips/new.html.erb</p>
+<h1>New Trip for: <%= current_user.email %></h1>
+<hr />
+<% if @trip.errors.any? %>
+  <h4> <%= @trip.errors.count %> Errors Saving The Car </h4>
+  <% @trip.errors.full_messages.each do |message| %>
+    <h6> <%= message %> </h6>
+  <% end %>
+<% end %>
+<%= form_for @trip do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required:true %>
+  <%= f.label :date %>
+  <%= f.text_field :date, required:true  %>
+  <%= f.submit %>
+  <% end %>
