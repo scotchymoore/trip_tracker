@@ -8,22 +8,15 @@
       <li>
         <%= location.name %>
         <br />
-        <%= link_to 'Show Location', location_path(@trip), class: "waves-effect waves-light btn"  %>
-        <%= link_to 'Edit Location', edit_location_path(@trip), class: "waves-effect waves-light btn"  %>
-        <%= link_to 'Delete Location', location_path(@trip), method: :delete, class: "waves-effect waves-light btn" %>
-      </li>
+
       <% end %>
     </ul>
 
     <% else %>
-      <h3>No Trips!, Make a new one!</h3>
+      <h3>No Locations!, Make a new one!</h3>
     <% end %>
 
-    <%= link_to 'Make new trip', new_trip_path, class: "waves-effect waves-light btn" %>
+    <%= link_to 'Make new Location', new_trip_location_path, class: "waves-effect waves-light btn" %>
 
 <br />
 <%= link_to 'Back to the Index!', trips_path %>
-<br />
-<%= link_to 'Add Address', new_location_address_path(@location) %>
-<br />
-<%= link_to 'Address index', location_addresses_path(@location) %>

@@ -1,22 +1,23 @@
 class LocationsController < ApplicationController
-before_action: set_location, except[:index, :new, :create, :update)
+before_action :set_trip
+before_action :set_location, except: [:index, :new, :create]
 
   def index
-    @locations = trip.locations
+    @locations = @trip.locations.all
   end
 
   def show
   end
 
   def new
-    @location = trip.locations.new
+    @location = @trip.locations.new
   end
 
   def create
-    @location = trip.locatons.new(location_params)
+    @location = @trip.locatons.new(location_params)
       if @location.save
-        redirect_to locations_path
-      else 
+        redirect_to trip_location_path(@trip, @location)
+      else
         render :new
       end
   end
@@ -25,8 +26,8 @@ before_action: set_location, except[:index, :new, :create, :update)
   end
 
   def update
-    if trip.location.save
-      redirect_to locations_path
+    if @location.update(location_params)
+      redirect_to trip_location_path(@trip, @location)
     else
       render :edit
     end
@@ -34,7 +35,7 @@ before_action: set_location, except[:index, :new, :create, :update)
 
   def destory
     @location.destroy
-    redirect_to locations_path
+    redirect_to trip_locations_path(@trip)
   end
 
 private
@@ -42,6 +43,9 @@ private
 def location_params
   params.require(:location).permit(:name, :date)
 end
+def set_trip
+    @trip = Trip.find(params[:trip_id])
+  end
 
 def set_location
   @location = trips.location.find(params[:id])
