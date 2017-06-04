@@ -7,6 +7,7 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def show
+    redirect_to location_address_path(@location)
   end
 
   def new

@@ -1,2 +1,15 @@
-<h1>Locations#edit</h1>
-<p>Find me in app/views/locations/edit.html.erb</p>
+<h1>Edit Location for <%= @trip %></h1>
+<hr />
+<% if @location.errors.any? %>
+  <h4> <%= @location.errors.count %> Errors Saving The Location </h4>
+  <% @trip.errors.full_messages.each do |message| %>
+    <h6> <%= message %> </h6>
+  <% end %>
+<% end %>
+<%= form_for @location do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required:true %>
+  <%= f.label :date %>
+  <%= f.text_field :date, required:true  %>
+  <%= f.submit %>
+  <% end %>
