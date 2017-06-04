@@ -1,2 +1,4 @@
-<h1>Addresses#new</h1>
-<p>Find me in app/views/addresses/new.html.erb</p>
+<h1> New Location Address For: <%= current_user.email %> </h1>
+<hr />
+
+<%= render(partial: 'form')%>

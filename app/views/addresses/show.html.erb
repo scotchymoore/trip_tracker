@@ -1,2 +1,24 @@
-<h1>Addresses#show</h1>
-<p>Find me in app/views/addresses/show.html.erb</p>
+<h1>Address Location for: </h1>
+<br />
+
+
+<h1><%=@address.location_address %>
+<ul>
+  <li>
+    Location Address: <%= @address.location_address %>
+  </li>
+
+  <li>
+    Location Description: <%= @address.description %>
+  </li>
+</ul>
+
+
+
+  <i>
+    Posted At: <%= @person.created_at %>
+  </i>
+
+
+<br />
+  <%= link_to 'Back to Index', addresses_path %>
