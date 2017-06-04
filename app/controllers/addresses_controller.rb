@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :set_car, except: [:index, :new, :create]
 
   def index
-    @addresses = current_user.adresses
+    @addresses = current_user.adresses.all
   end
 
   def show
