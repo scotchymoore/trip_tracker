@@ -8,7 +8,8 @@
       <li>
         <%= location.name %>
         <br />
-
+        <%= link_to 'Edit', edit_trip_location_path(@trip, location)%>
+        <%= link_to 'Delete', trip_location_path(@trip, location), method: :delete%>
       <% end %>
     </ul>
 

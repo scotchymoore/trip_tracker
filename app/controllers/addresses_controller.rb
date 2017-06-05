@@ -1,19 +1,20 @@
 class AddressesController < ApplicationController
-  before_action :set_car, except: [:index, :new, :create]
+  before_action :set_location
+  before_action :set_address, except: [:index, :new, :create]
 
   def index
-    @addresses = current_user.adresses.all
+    @addresses = @location.addresses.all
   end
 
   def show
   end
 
   def new
-    @address = current_user.address.new
+    @address = @location.addresses.new
   end
 
   def create
-    @address = current_user.addresses.new(address_params)
+    @address = @location.addresses.new(address_params)
     if @address.save
       redirect_to @address, notice: 'Location Address Created!'
     else
@@ -45,8 +46,11 @@ def address_params
   params.require(:address).permit(:location_address, :description)
 end
 
+def set_location
+  @location = Location.find(params[:location_id])
+end
 #before action
 def set_address
-  @address = current_user.addresses.find(params[:id])
+  @address = @location.addresses.find(params[:id])
 end
 end

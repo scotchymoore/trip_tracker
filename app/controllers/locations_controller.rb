@@ -7,7 +7,7 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def show
- 
+
   end
 
   def new
@@ -15,12 +15,12 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def create
-    @location = Location.new(location_params)
-      if @location.save
-        redirect_to trip_location_path(@trip, @location)
-      else
-        render :new
-      end
+    @location = @trip.locations.new(location_params)
+    if @location.save
+      redirect_to trip_location_path(@trip, @location)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -34,7 +34,7 @@ before_action :set_location, except: [:index, :new, :create]
     end
   end
 
-  def destory
+  def destroy
     @location.destroy
     redirect_to trip_locations_path(@trip)
   end
@@ -46,8 +46,8 @@ def location_params
 end
 
 def set_trip
-    @trip = Trip.find(params[:trip_id])
-  end
+  @trip = Trip.find(params[:trip_id])
+end
 
 def set_location
   @location = @trip.locations.find(params[:id])
