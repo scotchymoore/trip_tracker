@@ -51,6 +51,8 @@ end
 
 def set_location
   @location = @trip.locations.find(params[:id])
+
 end
+
 
 end

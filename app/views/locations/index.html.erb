@@ -10,6 +10,7 @@
         <br />
         <%= link_to 'Edit', edit_trip_location_path(@trip, location)%>
         <%= link_to 'Delete', trip_location_path(@trip, location), method: :delete%>
+        <%= link_to 'Show Details', trip_location_path(@trip, location) %>
       <% end %>
     </ul>
 
