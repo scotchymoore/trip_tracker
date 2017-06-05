@@ -3,20 +3,21 @@ class AddressesController < ApplicationController
   before_action :set_address, except: [:index, :new, :create]
 
   def index
-    @addresses = @location.addresses.all
+    @addresses = @location.address.all
   end
 
   def show
   end
 
   def new
-    @address = @location.addresses.new
+    @address = Address.new
   end
 
   def create
-    @address = @location.addresses.new(address_params)
+    @address = Address.new(address_params)
+    @address.location_id = params[:location_id]
     if @address.save
-      redirect_to @address, notice: 'Location Address Created!'
+      redirect_to location_address_path(@location, @address), notice: 'Location Address Created!'
     else
       render :new
     end
@@ -40,17 +41,17 @@ class AddressesController < ApplicationController
   end
 
 
-private
-#strong params
-def address_params
-  params.require(:address).permit(:location_address, :description)
-end
+  private
+  #strong params
+  def address_params
+    params.require(:address).permit(:location_address, :description)
+  end
 
-def set_location
-  @location = Location.find(params[:location_id])
-end
-#before action
-def set_address
-  @address = @location.addresses.find(params[:id])
-end
+  def set_location
+    @location = Location.find(params[:location_id])
+  end
+  #before action
+  def set_address
+    @address = @location.address
+  end
 end
