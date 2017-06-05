@@ -1,9 +1,11 @@
 class AddressesController < ApplicationController
   before_action :set_location
+  
+  before_action :set_trip
   before_action :set_address, except: [:index, :new, :create]
 
   def index
-    @addresses = @location.address.all
+    @addresses = @location.addresses.all
   end
 
   def show
@@ -47,6 +49,10 @@ class AddressesController < ApplicationController
     params.require(:address).permit(:location_address, :description)
   end
 
+ def set_trip
+   @trip = @location.trip_id 
+  end
+  
   def set_location
     @location = Location.find(params[:location_id])
   end
