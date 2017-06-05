@@ -7,7 +7,7 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def show
-    redirect_to location_address_path(@location)
+ 
   end
 
   def new
@@ -15,7 +15,7 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def create
-    @location = @trip.locatons.new(location_params)
+    @location = Location.new(location_params)
       if @location.save
         redirect_to trip_location_path(@trip, @location)
       else
@@ -42,14 +42,15 @@ before_action :set_location, except: [:index, :new, :create]
 private
 
 def location_params
-  params.require(:location).permit(:name, :date)
+  params.require(:location).permit(:name, :date, :belongs_to)
 end
+
 def set_trip
     @trip = Trip.find(params[:trip_id])
   end
 
 def set_location
-  @location = trips.location.find(params[:id])
+  @location = @trip.locations.find(params[:id])
 end
 
 end
