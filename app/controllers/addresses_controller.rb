@@ -38,8 +38,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address.destroy
-    flash[:notice]= 'Location Address Deleted!'
-    redirect_to addresses_path
+    redirect_to trip_locations_path(@trip)
   end
 
 
