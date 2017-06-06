@@ -3,9 +3,13 @@
 
 
 <p class = 'show' >Date: <%= @trip.date %></p>
-<%= link_to 'Locations', trip_locations_path(@trip) %>
-<br />
-<%= link_to 'Back to the Index!', trips_path %>
-<br />
-<%= link_to 'Add Location', new_trip_location_path(@trip) %>
-<br />
+<ul>
+  <li>
+<%= link_to 'Locations', trip_locations_path(@trip), class: "waves-effect waves-light btn" %>
+
+<%= link_to 'Add Location', new_trip_location_path(@trip),class: "waves-effect waves-light btn" %>
+
+<%= link_to 'Back to the Index!', trips_path,class: "waves-effect waves-light btn" %>
+
+</li>
+</ul>
