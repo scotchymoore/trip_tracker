@@ -7,6 +7,11 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def show
+    if @location.address == nil
+      redirect_to new_location_address_path(@location)
+    else
+      redirect_to location_address_path(@location)
+    end
 
   end
 
@@ -35,6 +40,7 @@ before_action :set_location, except: [:index, :new, :create]
   end
 
   def destroy
+    @location.address.destroy
     @location.destroy
     redirect_to trip_locations_path(@trip)
   end

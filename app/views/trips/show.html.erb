@@ -1,12 +1,11 @@
 <h1>Here is your <%= @trip.name %></h1>
 <hr />
 
-<%= @trip.name %>
-<p>date: <%= @trip.date %></p>
 
+<p class = 'show' >Date: <%= @trip.date %></p>
+<%= link_to 'Locations', trip_locations_path(@trip) %>
 <br />
 <%= link_to 'Back to the Index!', trips_path %>
 <br />
 <%= link_to 'Add Location', new_trip_location_path(@trip) %>
 <br />
-<%= link_to 'Locations', trip_locations_path(@trip) %>

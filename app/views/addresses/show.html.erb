@@ -1,8 +1,5 @@
-<h1>Address Location for: </h1>
+<h1><%= @location.name %></h1>
 <br />
-
-
-<h1><%=@address.location_address %>
 <ul>
   <li>
     Location Address: <%= @address.location_address %>
@@ -17,7 +14,6 @@
 
 <br />
   <%= link_to 'Edit details', edit_location_address_path(@location)%>
-  <br />
-  <%= link_to 'Destroy', location_address_path(@location, @address), method: :delete%>
+
   <br />
   <%= link_to 'Back to Index', trip_locations_path(@trip) %>

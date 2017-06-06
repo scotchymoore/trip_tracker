@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_location
-  
+
   before_action :set_trip
   before_action :set_address, except: [:index, :new, :create]
 
@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.location_id = params[:location_id]
     if @address.save
-      redirect_to location_address_path(@location, @address), notice: 'Location Address Created!'
+      redirect_to location_address_path(@location, @address)
     else
       render :new
     end
@@ -49,9 +49,9 @@ class AddressesController < ApplicationController
   end
 
  def set_trip
-   @trip = @location.trip_id 
+   @trip = @location.trip_id
   end
-  
+
   def set_location
     @location = Location.find(params[:location_id])
   end

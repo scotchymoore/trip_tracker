@@ -2,11 +2,13 @@
   <div class="container-fluid">
 
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">Trip Tracker</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li>
+          <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div><!-- /.container-fluid -->
