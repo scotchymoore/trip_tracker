@@ -19,9 +19,14 @@ gem 'materialize-sass'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise'
+gem 'omniauth-facebook'
+
 
 group :development, :test do
 gem 'pry'
+gem 'annotate'
+gem 'faker'
+gem 'dotenv-rails'
 end
 
 group :development do
