@@ -26,6 +26,7 @@ group :development, :test do
 gem 'pry'
 gem 'annotate'
 gem 'faker'
+gem 'populator'
 gem 'dotenv-rails'
 end
 
