@@ -13,6 +13,3 @@ namespace :trip_users do
     puts 'User email file generated!'
   end
 end
-
-
-

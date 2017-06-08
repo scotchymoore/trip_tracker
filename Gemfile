@@ -28,6 +28,7 @@ gem 'annotate'
 gem 'faker'
 gem 'populator'
 gem 'dotenv-rails'
+gem 'letter_opener'
 end
 
 group :development do
